@@ -1,0 +1,27 @@
+{
+  "dependencies": {
+    "express": "^5.1.0",
+    "joi": "^18.0.1",
+    "mongoose": "^8.19.2"
+  },
+  "name": "3-oy-1-dars-uyga-vazifa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {
+    "@eslint/js": "^9.38.0",
+    "eslint": "^9.38.0",
+    "globals": "^16.4.0",
+    "nodemon": "^3.1.10",
+    "prettier": "^3.6.2"
+  },
+  "type": "module",
+  "scripts": {
+    "start": "node main.js",
+    "dev": "nodemon main.js",
+    "format": "prettier --write \"src/**/*.js\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
