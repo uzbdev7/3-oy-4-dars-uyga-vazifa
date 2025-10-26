@@ -37,6 +37,7 @@ export const updateRegion = async (req, res, next) => {
 };
 
 
+
 export const deleteRegion = async (req, res, next) => {
     try {
         const { id } = req.params;

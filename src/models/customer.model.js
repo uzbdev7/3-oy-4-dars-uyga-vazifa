@@ -12,3 +12,4 @@ const CustomerModel = model('customer', customerSchema);
 
 export default CustomerModel;
 
+

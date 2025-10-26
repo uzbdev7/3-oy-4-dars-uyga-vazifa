@@ -27,3 +27,4 @@ const paymentSchema = new Schema(
 const PaymentModel = model('payments', paymentSchema);
 
 export default PaymentModel;
+

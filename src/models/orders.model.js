@@ -28,3 +28,4 @@ const ordersSchema = new Schema(
 const OrdersModel = model('orders', ordersSchema);
 
 export default OrdersModel;
+

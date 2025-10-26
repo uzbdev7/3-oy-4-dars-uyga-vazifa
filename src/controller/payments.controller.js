@@ -10,6 +10,7 @@ export const createPayment = async (req, res, next) => {
     }
 };
 
+
 export const getAllPayment = async (req, res, next) => {
     try {
         const payment = await PaymentModel.find(req.body);
