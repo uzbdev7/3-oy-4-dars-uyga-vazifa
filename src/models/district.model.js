@@ -10,3 +10,4 @@ const districtSchema = new Schema(
 const districtModel = model('district', districtSchema);
 
 export default districtModel;
+

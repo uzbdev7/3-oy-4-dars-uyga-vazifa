@@ -10,6 +10,7 @@ export const createWaterPro = async (req, res, next) => {
     }
 };
 
+
 export const getAll = async (req, res, next) => {
     try {
         const water = await WaterModel.find();

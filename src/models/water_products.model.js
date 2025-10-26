@@ -12,3 +12,4 @@ const waterSchema = new Schema(
 const WaterModel = model('water_products', waterSchema);
 
 export default WaterModel;
+

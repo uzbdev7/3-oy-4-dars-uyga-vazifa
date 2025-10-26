@@ -22,3 +22,4 @@ const regionSchema = new Schema(
 const RegionModel = model('region', regionSchema);
 
 export default RegionModel;
+

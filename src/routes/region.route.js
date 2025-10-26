@@ -19,3 +19,4 @@ router.put('/:id', validate(regionschemaUpdate, 'body'), updateRegion);
 router.delete('/:id', deleteRegion);
 
 export default router;
+

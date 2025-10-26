@@ -13,6 +13,7 @@ import {
 
 const router = Router();
 
+
 router.get('/', getAllCustomer);
 router.post('/', validate(customerschema, 'body'), createCustomer);
 router.put('/:id', validate(customerschemaUpdate, 'body'), updateCustomer);

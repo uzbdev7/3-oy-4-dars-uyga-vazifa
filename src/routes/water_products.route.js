@@ -18,3 +18,4 @@ router.put('/:id', validate(waterProschemaUpdate, 'body'), updateWaterPro);
 router.delete('/:id', deleteWaterPro);
 
 export default router;
+

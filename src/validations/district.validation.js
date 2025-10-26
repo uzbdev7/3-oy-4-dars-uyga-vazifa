@@ -7,3 +7,4 @@ export const districtschema = Joi.object({
 export const districtschemaUpdate = Joi.object({
     name: Joi.string().min(6).max(20).optional(),
 });
+

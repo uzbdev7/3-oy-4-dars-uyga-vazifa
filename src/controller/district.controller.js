@@ -43,3 +43,4 @@ export const deleteDistrict = async (req, res, next) => {
         next(error);
     }
 };
+

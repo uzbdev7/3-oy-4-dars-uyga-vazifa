@@ -15,3 +15,4 @@ export const regionschemaUpdate = Joi.object({
     customer_id: Joi.string().optional(),
     district_id: Joi.string().optional(),
 });
+
