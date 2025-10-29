@@ -10,12 +10,14 @@ import {
     paymentSchema,
     paymentSchemaUpdate,
 } from '../validations/payments.validation.js';
+import { authGuard } from '../middleware/authGuard.js';
+import { roleGuard } from '../middleware/roleGuard.js';
 
 const router = Router();
 
 router.get('/', getAllPayment);
-router.post('/', validate(paymentSchema, 'body'), createPayment);
-router.put('/:id', validate(paymentSchemaUpdate, 'body'), updatePayment);
-router.delete('/:id', deletePayment);
+router.post('/',authGuard,roleGuard("admin","client"), validate(paymentSchema, 'body'), createPayment);
+router.put('/:id',authGuard, roleGuard("admin","client"), validate(paymentSchemaUpdate, 'body'), updatePayment);
+router.delete('/:id',authGuard, roleGuard("admin","client"), deletePayment);
 
 export default router;

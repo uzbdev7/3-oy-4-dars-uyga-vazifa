@@ -1,9 +1,11 @@
+/* eslint-disable no-undef */
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import mainRoutes from './routes/index.js';
 import { errorHandler } from './middleware/errorHandler.js';
-
+// import userRoutes from '../src/routes/auth.route.js'
+import morgan from "morgan";
 dotenv.config();
 
 const app = express();
@@ -11,6 +13,7 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 3000;
 
+app.use(morgan("dev")); 
 app.use('/', mainRoutes);
 app.use(errorHandler);
 

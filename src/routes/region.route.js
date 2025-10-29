@@ -10,13 +10,15 @@ import {
     regionschema,
     regionschemaUpdate,
 } from '../validations/region.validation.js';
+import { authGuard } from '../middleware/authGuard.js';
+import { roleGuard } from '../middleware/roleGuard.js';
 
 const router = Router();
 
 router.get('/', getAllRegion);
-router.post('/', validate(regionschema, 'body'), createRegion);
-router.put('/:id', validate(regionschemaUpdate, 'body'), updateRegion);
-router.delete('/:id', deleteRegion);
+router.post('/', authGuard, roleGuard("admin","client"), validate(regionschema, 'body'), createRegion);
+router.put('/:id',authGuard, roleGuard("admin","client"), validate(regionschemaUpdate, 'body'), updateRegion);
+router.delete('/:id',authGuard, roleGuard("admin","client"), deleteRegion);
 
 export default router;
 

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import UserModel from "../models/user.model.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
@@ -7,7 +8,7 @@ dotenv.config();
 
 export const userRegister = async (req, res, next) => {
     try {
-        const { name, fullName, email, password, role } = req.body;
+        const { name, fullName, email, phone, password, role } = req.body;
 
         const existingUser = await UserModel.findOne({ email });
         if (existingUser) {
@@ -20,6 +21,7 @@ export const userRegister = async (req, res, next) => {
             name,
             fullName,
             email,
+            phone,
             password: hashedPassword,
             role: role || "client"
         });
