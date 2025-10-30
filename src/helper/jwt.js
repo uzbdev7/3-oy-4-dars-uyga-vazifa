@@ -1,22 +1,27 @@
-import jwt, { verify } from 'jsonwebtoken';
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
+import jwt from 'jsonwebtoken';
 
-const secret = 'qwerty12345';
-
-const payload = {
-    id: 1,
-    name: 'Axrorbek',
-    role: 'student',
-    sstudentId: 12210,
+// CREATE ACCESS TOKEN
+export const generateAccestoken = (user) => {
+    return jwt.sign({ id: user._id }, process.env.JWT_ACCESS_SECRET, {
+    expiresIn: process.env.JWT_ACCESS_EXPIRES,
+  });
 };
-const expiresIn = { expiresIn: '2s' };
-const token = jwt.sign(payload, secret, expiresIn);
-console.log({ token });
 
-function checkToken(token) {
-    var decoded = verify(token, secret);
-    console.log({ decoded });
-}
+// CREATE REFRESH TOKEN
+export const generateRefreshToken = (user) => {
+  return jwt.sign({ id: user._id }, process.env.JWT_REFRESH_SECRET, {
+    expiresIn: process.env.JWT_REFRESH_EXPIRES,
+  });
+};
 
-setTimeout(() => {
-    checkToken(token);
-}, 5000);
+// VERIFY TOKEN
+export const verifyToken = async (token, secret) => {
+  try {
+    return jwt.verify(token, secret);
+  } catch (err) {
+    console.log(err)
+    next();
+  }
+};

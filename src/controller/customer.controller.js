@@ -1,15 +1,5 @@
 import CustomerModel from '../models/customer.model.js';
 
-export const createCustomer = async (req, res, next) => {
-    try {
-        const customer = await CustomerModel.create(req.body);
-        res.status(201).json(customer);
-    } catch (err) {
-        console.log(err);
-        next(err);
-    }
-};
-
 export const getAllCustomer = async (req, res, next) => {
     try {
 

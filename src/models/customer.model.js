@@ -11,5 +11,3 @@ const customerSchema = new Schema(
 const CustomerModel = model('customer', customerSchema);
 
 export default CustomerModel;
-
-

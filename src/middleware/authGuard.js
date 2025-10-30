@@ -32,6 +32,6 @@ export const authGuard = async (req, res, next) => {
     next();
 
   } catch (err) {
-    res.status(403).json({ message: "Token invalid yoki muddati o‘tgan" });
+    res.status(403).json({ message: "Token invalid yoki muddati o'tgan" });
   }
 };

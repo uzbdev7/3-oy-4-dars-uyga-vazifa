@@ -1,15 +1,5 @@
 import delivery_staffModel from '../models/delivery_staff.model.js';
 
-export const createDelivery = async (req, res, next) => {
-    try {
-        const delivery = await delivery_staffModel.create(req.body);
-        res.status(201).send(delivery);
-    } catch (err) {
-        console.log(err);
-        next(err);
-    }
-};
-
 export const getAllDelivery = async (req, res, next) => {
     try {
         const region = await delivery_staffModel
