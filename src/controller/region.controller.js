@@ -13,7 +13,7 @@ export const createRegion = async (req, res, next) => {
 export const getAllRegion = async (req, res, next) => {
     try {
         const region = await RegionModel.find(req.body).populate([
-            { path: 'customer_id', select: 'name phone' },
+            { path: 'user_id', select: 'name phone email role isActive ' },
             { path: 'district_id', select: 'name' },
         ]);
         res.status(200).send(region);

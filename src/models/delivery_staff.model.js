@@ -14,7 +14,7 @@ const delivery_staffSchema = new Schema(
     { timestamps: true }
 );
 
-const delivery_staffModel = model('delivery_staff', delivery_staffSchema);
+const DeliveryStaffModel = model('delivery_staff', delivery_staffSchema);
 
-export default delivery_staffModel;
+export default DeliveryStaffModel;
 

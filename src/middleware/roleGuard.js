@@ -1,8 +1,8 @@
 export const roleGuard = (...allowedRoles) => {
   return (req, res, next) => {
     try {
-      const userRole = req.user?.role;
-
+      const userRole = req.user.role;
+      console.log(userRole)
       if (!userRole) {
         return res.status(401).json({ message: "Foydalanuvchi roli topilmadi" });
       }

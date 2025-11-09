@@ -3,35 +3,36 @@
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import UserModel from "../models/user.model.js";
+import { verifyToken } from "../helper/jwt.js";
 
 dotenv.config();
 
 export const authGuard = async (req, res, next) => {
-  const authHeader = req.headers.authorization;
-
-  if (!authHeader || !authHeader.startsWith("Bearer ")) {
-    return res.status(401).json({ message: "Authorization token required" });
-  }
-
-  const token = authHeader.split(" ")[1];
-
   try {
-    const decoded = jwt.verify(token, process.env.JWT_ACCESS_SECRET);
+    const authHeader = req.headers.authorization;
 
-    const user = await UserModel.findById(decoded.id);
-    if (!user) {
-      return res.status(401).json({ message: "User not found" });
+    if (!authHeader || !authHeader.startsWith("Bearer ")) {
+      return res.status(401).json({ message: "Authorization token mavjud emas" });
     }
 
-    req.user = {
-      id: user._id,
-      name: user.name,
-      role: user.role
-    };
+    const token = authHeader.split(" ")[1];
 
-    next();
+    const decoded = verifyToken(token, process.env.JWT_ACCESS_SECRET);
 
+    if (!decoded || !decoded.id) {
+      return res.status(401).json({ message: "Token noto'g'ri yoki muddati o'tgan" });
+    }
+
+    const user = await UserModel.findById(decoded.id);
+
+    if (!user) {
+      return res.status(401).json({ message: "Foydalanuvchi topilmadi" });
+    }
+
+    req.user = user;
+    next(); 
   } catch (err) {
-    res.status(403).json({ message: "Token invalid yoki muddati o'tgan" });
+    console.error("Auth guard error:", err);
+    res.status(500).json({ message: "Server xatosi" });
   }
 };

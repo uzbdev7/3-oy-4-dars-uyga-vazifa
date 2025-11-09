@@ -1,10 +1,9 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 import jwt from 'jsonwebtoken';
 
 // CREATE ACCESS TOKEN
 export const generateAccestoken = (user) => {
-    return jwt.sign({ id: user._id }, process.env.JWT_ACCESS_SECRET, {
+    return jwt.sign({ id: user._id.toString() }, process.env.JWT_ACCESS_SECRET, {
     expiresIn: process.env.JWT_ACCESS_EXPIRES,
   });
 };
@@ -17,11 +16,11 @@ export const generateRefreshToken = (user) => {
 };
 
 // VERIFY TOKEN
-export const verifyToken = async (token, secret) => {
+export const verifyToken = (token, secret) => {
   try {
     return jwt.verify(token, secret);
   } catch (err) {
-    console.log(err)
-    next();
+    console.error("JWT verify error:", err);
+    return null; 
   }
 };

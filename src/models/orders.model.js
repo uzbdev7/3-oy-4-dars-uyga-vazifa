@@ -2,9 +2,9 @@ import { model, Schema } from 'mongoose';
 
 const ordersSchema = new Schema(
     {
-        customer_id: {
+        user_id: {
             type: Schema.Types.ObjectId,
-            ref: 'customer',
+            ref: 'User',
             required: true,
         },
         delivery_staff_id: {

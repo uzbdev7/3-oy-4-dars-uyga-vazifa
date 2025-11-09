@@ -5,9 +5,9 @@ const regionSchema = new Schema(
         name: String,
         address: String,
         location: String,
-        customer_id: {
+        user_id: {
             type: Schema.Types.ObjectId,
-            ref: 'customer',
+            ref: 'User',
             required: true,
         },
         district_id: {
